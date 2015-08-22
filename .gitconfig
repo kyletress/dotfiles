@@ -1,0 +1,28 @@
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+[user]
+	name = Kyle Tress
+	email = kyle@kyletress.com
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
+[alias]
+	b = branch
+	co = checkout
+	cob = checkout -b
+	s = status
+	d = diff
+	l = log --pretty=oneline -n 20 --graph --abbrev-commit
+	ls = log --oneline
+	wip = commit -am "WIP"
+	undo = reset HEAD~1 --mixed
+	cm = !git add -A && git commit -m
+[push]
+	default = simple
+[core]
+	editor = atom --wait
+[help]
+	autocorrect = 1
