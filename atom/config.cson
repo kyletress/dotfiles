@@ -1,0 +1,21 @@
+"*":
+  editor:
+    invisibles: {}
+    softWrap: true
+    softWrapAtPreferredLineLength: true
+    fontFamily: "Source Code Pro"
+    fontSize: 15
+  core:
+    themes: [
+      "seti-ui"
+      "base16-tomorrow-dark-theme"
+    ]
+    excludeVcsIgnoredPaths: false
+  "exception-reporting":
+    userId: "6afa8865-56d4-6c9e-f7c7-ff6312b4879b"
+  welcome:
+    showOnStartup: false
+  emmet: {}
+  "tree-view":
+    hideIgnoredNames: false
+  "one-dark-ui": {}
