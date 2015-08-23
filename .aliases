@@ -1,0 +1,17 @@
+# Navigation
+alias ..="cd .."
+alias cd..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
+# Flush Directory Service cache
+alias flush="dscacheutil -flushcache"
+
+# Shortcuts
+alias g="git"
+
+# Undo a `git push`
+alias undopush="git push -f origin HEAD^:master"
+
+# Empty the Trash on all mounted volumes and the main HDD
+alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; rm -rfv ~/.Trash"

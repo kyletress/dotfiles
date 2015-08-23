@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 # This installs homebrew, utilities, apps, and fonts.
 
