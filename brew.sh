@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/sh
 
 # This installs homebrew, utilities, apps, and fonts.
 
@@ -39,6 +39,7 @@ brew cask install --appdir="/Applications" ${apps[@]}
 
 # fonts
 fonts=(
+  font-source-code-pro
   font-source-sans-pro
 )
 
