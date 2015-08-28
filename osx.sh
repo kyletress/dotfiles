@@ -20,3 +20,6 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
 # Auto hide
 defaults write com.apple.dock autohide -bool true
+
+# Disable screenshot shadows
+defaults write com.apple.screencapture disable-shadow -bool TRUE
