@@ -18,6 +18,7 @@ brew install git
 brew install postgresql
 brew install redis
 brew install heroku-toolbelt
+brew install hub
 
 # can I install git, rvm, and sass?
 
