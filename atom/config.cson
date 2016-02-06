@@ -7,7 +7,7 @@
     fontSize: 15
   core:
     themes: [
-      "seti-ui"
+      "native-ui"
       "base16-tomorrow-dark-theme"
     ]
     excludeVcsIgnoredPaths: false
