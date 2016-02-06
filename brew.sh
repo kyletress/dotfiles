@@ -42,6 +42,7 @@ brew cask install --appdir="/Applications" ${apps[@]}
 fonts=(
   font-source-code-pro
   font-source-sans-pro
+  font-input
 )
 
 # install fonts
