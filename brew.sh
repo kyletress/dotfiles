@@ -32,6 +32,7 @@ apps=(
   github-desktop
   minecraft
   transmission
+  sketch
 )
 
 # Install these apps to /Applications
