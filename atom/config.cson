@@ -3,7 +3,7 @@
     invisibles: {}
     softWrap: true
     softWrapAtPreferredLineLength: true
-    fontFamily: "Source Code Pro"
+    fontFamily: "Input Mono"
     fontSize: 15
   core:
     themes: [
