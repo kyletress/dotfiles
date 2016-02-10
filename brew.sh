@@ -32,6 +32,7 @@ apps=(
   github-desktop
   sketch
   google-chrome
+  flux
 )
 
 # Install these apps to /Applications
