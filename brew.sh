@@ -33,6 +33,7 @@ apps=(
   minecraft
   transmission
   sketch
+  flux
 )
 
 # Install these apps to /Applications
