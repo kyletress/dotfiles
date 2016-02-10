@@ -30,9 +30,8 @@ apps=(
   appcleaner
   atom
   github-desktop
-  minecraft
-  transmission
   sketch
+  google-chrome
 )
 
 # Install these apps to /Applications

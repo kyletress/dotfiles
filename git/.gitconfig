@@ -24,5 +24,6 @@
 	default = simple
 [core]
 	editor = atom --wait
+	excludesfile = ~/.gitignore
 [help]
 	autocorrect = 1

@@ -10,9 +10,12 @@
       "native-ui"
       "base16-tomorrow-dark-theme"
     ]
+    disabledPackages: [
+      "background-tips"
+      "exception-reporting"
+      "metrics"
+    ]
     excludeVcsIgnoredPaths: false
-  "exception-reporting":
-    userId: "6afa8865-56d4-6c9e-f7c7-ff6312b4879b"
   welcome:
     showOnStartup: false
   emmet: {}
