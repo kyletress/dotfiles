@@ -26,6 +26,7 @@ brew install caskroom/cask/brew-cask
 
 # apps
 apps=(
+  1password
   appcleaner
   atom
   flux
