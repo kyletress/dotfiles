@@ -21,8 +21,6 @@ brew install heroku-toolbelt
 brew install hub
 brew install imagemagick
 
-# can I install git, rvm, and sass?
-
 # Install cask to get apps
 brew install caskroom/cask/brew-cask
 
@@ -30,10 +28,10 @@ brew install caskroom/cask/brew-cask
 apps=(
   appcleaner
   atom
-  github-desktop
-  sketch
-  google-chrome
   flux
+  github-desktop
+  google-chrome
+  sketch
 )
 
 # Install these apps to /Applications
@@ -44,6 +42,7 @@ brew cask install --appdir="/Applications" ${apps[@]}
 fonts=(
   font-source-code-pro
   font-source-sans-pro
+  font-source-serif-pro
   font-input
 )
 
