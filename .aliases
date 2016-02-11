@@ -4,6 +4,11 @@ alias cd..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
+alias desktop="cd ~/Desktop"
+alias dotfiles="cd ~/projects/dotfiles"
+alias kt="cd ~/projects/kyletress.com"
+alias projects="cd ~/projects"
+
 # Flush Directory Service cache
 alias flush="dscacheutil -flushcache"
 
