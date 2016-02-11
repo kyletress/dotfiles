@@ -3,6 +3,7 @@ alias ..="cd .."
 alias cd..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
+alias lsa="ls -a"
 
 alias desktop="cd ~/Desktop"
 alias dotfiles="cd ~/projects/dotfiles"

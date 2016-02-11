@@ -8,6 +8,11 @@ if [ -f ~/.prompt ]; then
     source ~/.prompt
 fi
 
+# load prompt
+if [ -f ~/.functions ]; then
+    source ~/.functions
+fi
+
 # Load the default .profile
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile"
 
