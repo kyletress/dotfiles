@@ -2,3 +2,18 @@
 function mkd() {
 	mkdir -p "$@" && cd "$_";
 }
+
+# ----------------------------------------------------
+#   Remote Tracking Branch
+#   -> Creates a new branch and pushes that branch to remote
+#  	http://drewbarontini.com/articles/git-feature-branch-workflow/
+# ----------------------------------------------------
+#
+# $1 - the branch name
+#
+# Usage: `git_remote_tracking_branch fix_sign_up_form_styles`
+#
+
+function git_remote_tracking_branch() {
+  git checkout -b $1 && git push -u origin $1
+}
