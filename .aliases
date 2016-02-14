@@ -15,6 +15,7 @@ alias flush="dscacheutil -flushcache"
 
 # Shortcuts
 alias g="git"
+alias hpr="hub pull-request"
 
 # Undo a `git push`
 alias undopush="git push -f origin HEAD^:master"
