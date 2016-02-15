@@ -1,7 +1,9 @@
 # install Xcode tools if not already installed
 if ! xcode-select -p > /dev/null 2>&1; then
-  echo -e "XCode command line tools are not installed"
+  echo -e "Xcode command line tools are not installed"
   echo -e "a dialog will pop up to install"
+
+  xcode-select --install
 else
   echo -e "Xcode command line tools are already installed"
 fi
@@ -11,7 +13,7 @@ fi
 projects=~/projects
 dir=~/dotfiles
 olddir=~/dotfiles_old # the backups
-files=".bash_profile .aliases .functions .gemrc .irbrc .prompt .gitconfig .gitignore" # list of files to symlink
+files=".bash_profile aliases functions .gemrc .irbrc prompt .gitconfig .gitignore" # list of files to symlink
 
 # create projects folder
 echo "Creating a projects folder"
@@ -42,7 +44,7 @@ for file in $files; do
   echo "Moving existing dotfiles from ~ to $olddir"
   mv ~/$file ~/dotfiles_old/
   echo "Creating symlink to $file in home directory"
-  ln -s $dir/$file ~/$file
+  ln -s $dir/$file ~/.$file
 done
 
 # Install Homebrew

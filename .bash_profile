@@ -1,16 +1,16 @@
 # load aliases
-if [ -f ~/.aliases ]; then
-    source ~/.aliases
+if [ -f ~/alias ]; then
+    source ~/alias
 fi
 
 # load prompt
-if [ -f ~/.prompt ]; then
-    source ~/.prompt
+if [ -f ~/prompt ]; then
+    source ~/prompt
 fi
 
 # load prompt
-if [ -f ~/.functions ]; then
-    source ~/.functions
+if [ -f ~/functions ]; then
+    source ~/functions
 fi
 
 # Load the default .profile
