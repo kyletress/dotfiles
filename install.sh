@@ -1,3 +1,11 @@
+# install Xcode tools if not already installed
+if ! xcode-select -p > /dev/null 2>&1; then
+  echo -e "XCode command line tools are not installed"
+  echo -e "a dialog will pop up to install"
+else
+  echo -e "Xcode command line tools are already installed"
+fi
+
 # Variables
 
 projects=~/projects
@@ -16,7 +24,6 @@ echo "Cloning the repo"
 cd $projects
 hub clone kyletress.com
 echo "...done"
-
 
 # create dotfiles_old in home directory
 echo "Creating $olddir to backup old dotfiles in ~"
@@ -38,4 +45,7 @@ for file in $files; do
   ln -s $dir/$file ~/$file
 done
 
-source ~/.bash_profile
+# Install Homebrew
+# ./brew.sh
+
+# source ~/.bash_profile

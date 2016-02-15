@@ -6,9 +6,10 @@ alias ....="cd ../../.."
 alias lsa="ls -a"
 
 alias desktop="cd ~/Desktop"
-alias dotfiles="cd ~/projects/dotfiles"
+alias dotfiles="cd ~/dotfiles"
 alias kt="cd ~/projects/kyletress.com"
 alias projects="cd ~/projects"
+alias js="jekyll serve"
 
 # Flush Directory Service cache
 alias flush="dscacheutil -flushcache"

@@ -3,6 +3,11 @@ function mkd() {
 	mkdir -p "$@" && cd "$_";
 }
 
+take () {
+	mkdir -p $1
+	cd $1
+}
+
 # ----------------------------------------------------
 #   Remote Tracking Branch
 #   -> Creates a new branch and pushes that branch to remote
