@@ -8,6 +8,7 @@ alias lsa="ls -a"
 alias desktop="cd ~/Desktop"
 alias dotfiles="cd ~/dotfiles"
 alias kt="cd ~/projects/kyletress.com"
+alias fbs="cd ~/projects/instaviser-fbs"
 alias projects="cd ~/projects"
 alias js="jekyll serve"
 

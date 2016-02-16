@@ -16,6 +16,9 @@ defaults write com.apple.Safari HomePage -string "about:blank"
 defaults write com.apple.finder AppleShowAllFiles -bool true
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
+# Always open everything in Finder's list view.
+defaults write com.apple.Finder FXPreferredViewStyle Nlsv
+
 # Dock
 
 # Auto hide
