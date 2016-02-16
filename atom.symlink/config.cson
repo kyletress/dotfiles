@@ -10,6 +10,7 @@
       "native-ui"
       "base16-tomorrow-dark-theme"
     ]
+    hideGitIgnoredFiles: true
     disabledPackages: [
       "background-tips"
       "exception-reporting"

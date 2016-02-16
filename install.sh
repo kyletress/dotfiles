@@ -131,6 +131,8 @@ setup_gitconfig
 install_dotfiles
 
 # install homebrew
+$DOTFILES_ROOT/homebrew/install.sh 2>&1
+
 # setup project folder
 # clone some repos
 
