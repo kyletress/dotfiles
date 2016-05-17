@@ -13,6 +13,9 @@ alias sledsheet="cd ~/projects/sledsheet"
 alias projects="cd ~/projects"
 alias js="jekyll serve"
 alias pg="postgres -D /usr/local/var/postgres"
+alias wl="cd ~/projects/instaviser-wl"
+alias cal="cd ~/projects/instaviser-cal"
+alias usoc="cd ~/projects/instaviser-usoc"
 
 # Flush Directory Service cache
 alias flush="dscacheutil -flushcache"
