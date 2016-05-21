@@ -32,3 +32,10 @@ alias migrate="rake db:migrate"
 
 # Empty the Trash on all mounted volumes and the main HDD
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; rm -rfv ~/.Trash"
+
+# Heroku
+alias h="heroku"
+alias hl="heroku logs -t"
+alias hc="heroku run rails c"
+alias ho="heroku open"
+alias hr="heroku restart"
