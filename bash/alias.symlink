@@ -35,7 +35,8 @@ alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; rm -rfv ~/.Trash"
 
 # Heroku
 alias h="heroku"
+alias hr="heroku run"
 alias hl="heroku logs -t"
-alias hc="heroku run rails c"
+alias hrrc="heroku run rails c"
 alias ho="heroku open"
-alias hr="heroku restart"
+alias hre="heroku restart"
