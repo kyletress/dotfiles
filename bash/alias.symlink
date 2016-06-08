@@ -40,3 +40,10 @@ alias hl="heroku logs -t"
 alias hrrc="heroku run rails c"
 alias ho="heroku open"
 alias hre="heroku restart"
+
+# Delayed Job
+alias rkj="rake jobs:work"
+
+# Deployment
+alias gps='settitle "Pushing to staging..." && git push staging master'
+alias gpp='settitle "Pushing to production..." && git push production master'

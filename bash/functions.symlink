@@ -22,3 +22,8 @@ take () {
 function git_remote_tracking_branch() {
   git checkout -b $1 && git push -u origin $1
 }
+
+function settitle() {
+  echo -e "\033[32m$1"
+  tput sgr0;
+}
