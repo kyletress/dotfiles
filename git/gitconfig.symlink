@@ -15,7 +15,7 @@
 	cob = checkout -b
 	s = status
 	d = diff
-	l = log --pretty=oneline -n 20 --graph --abbrev-commit
+	l = log --pretty=oneline -n 40 --abbrev-commit
 	ls = log --oneline
 	wip = commit -am "WIP"
 	undo = reset HEAD~1 --mixed
