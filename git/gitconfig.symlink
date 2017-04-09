@@ -20,6 +20,8 @@
 	wip = commit -am "WIP"
 	undo = reset HEAD~1 --mixed
 	cm = !git add -A && git commit -m
+	dfw = diff --ignore-space-change
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 [push]
 	default = simple
 [core]

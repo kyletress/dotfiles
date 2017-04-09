@@ -7,15 +7,20 @@ alias lsa="ls -a"
 
 alias desktop="cd ~/Desktop"
 alias dotfiles="cd ~/dotfiles"
-alias kt="cd ~/projects/kyletress.com"
+alias kt="cd ~/projects/kyletress.github.io"
+alias mt="cd ~/projects/morgantracey.github.io"
 alias fbs="cd ~/projects/instaviser-fbs-wl"
 alias sledsheet="cd ~/projects/sledsheet"
 alias projects="cd ~/projects"
 alias js="jekyll serve"
 alias pg="postgres -D /usr/local/var/postgres"
 alias wl="cd ~/projects/instaviser-wl"
-alias cal="cd ~/projects/instaviser-cal"
+alias cal="cd ~/projects/cal-new"
 alias usoc="cd ~/projects/instaviser-usoc"
+alias csw="cd ~/projects/instaviser-csw"
+
+# Instaviser
+alias tunnel='ssh -f -N'
 
 # Flush Directory Service cache
 alias flush="dscacheutil -flushcache"
@@ -23,6 +28,7 @@ alias flush="dscacheutil -flushcache"
 # Shortcuts
 alias g="git"
 alias hpr="hub pull-request"
+alias gitdfw="git diff --ignore-space-change"
 
 # Undo a `git push`
 alias undopush="git push -f origin HEAD^:master"
@@ -47,3 +53,13 @@ alias rkj="rake jobs:work"
 # Deployment
 alias gps='settitle "Pushing to staging..." && git push staging master'
 alias gpp='settitle "Pushing to production..." && git push production master'
+
+# Postgres
+alias pg="postgres -D /usr/local/var/postgres"
+
+# Remove DS_Store
+alias cleanupds="find . -type f -name '*.DS_Store' -ls -delete"
+
+# Middleman
+alias mm="middleman"
+alias mma="middleman article"
