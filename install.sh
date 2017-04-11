@@ -150,4 +150,4 @@ install_dotfiles
 
 # Set macOS preferences
 # Run this last because it will reload the shell
-# source .macos
+source .macos
