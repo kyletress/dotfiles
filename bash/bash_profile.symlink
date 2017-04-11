@@ -9,7 +9,7 @@ if [ -f ~/.prompt ]; then
     source ~/.prompt
 fi
 
-# load prompt
+# load functions
 if [ -f ~/.functions ]; then
     source ~/.functions
 fi

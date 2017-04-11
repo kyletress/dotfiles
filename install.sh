@@ -1,28 +1,43 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
-# first problem is here....
-# cd "$(dirname "$0")/.."
+echo "Setting up your Mac..."
+
+# Check for Xcode Command Line Tools and install if necessary
+echo "Checking for Xcode Command Line Tools..."
+if ! xcode-select -p > /dev/null 2>&1;
+then
+  echo "A dialog will pop up to install..."
+  xcode-select --install
+else
+  echo "Xcode Command Line Tools already installed!"
+fi
+
+# Check for Homebrew and install if necessary
+echo "Checking for Homebrew..."
+if test ! $(which brew)
+then
+  echo "Installing Homebrew..."
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+else
+  echo "Homebrew already installed!"
+fi
+
+brew update
+brew tap homebrew/bundle # see Brewfile
+brew bundle
+
+# Dotfiles
 DOTFILES_ROOT=~/dotfiles
 
 # exit if any line fails
 set -e
 echo ''
 
-# install Xcode tools if not already installed
-echo "Installing Xcode command line tools..."
-if ! xcode-select -p > /dev/null 2>&1; then
-  echo -e "a dialog will pop up to install"
-
-  xcode-select --install
-else
-  echo -e "Already installed."
-fi
-
 # Set up gitconfig file with correct user information
 setup_gitconfig () {
   if ! [ -f git/gitconfig.local.symlink ]
   then
-    echo 'Setting up your gitconfig...'
+    echo 'Setting up gitconfig...'
     git_credential='osxkeychain'
     echo ' - What is your GitHub name?'
     read -e git_authorname
@@ -127,27 +142,12 @@ install_dotfiles () {
   done
 }
 
+# Create a projects directory
+mkdir -p $HOME/Projects # if it doesn't exist
+
 setup_gitconfig
 install_dotfiles
 
-# install homebrew
-$DOTFILES_ROOT/homebrew/install.sh 2>&1
-
-# setup project folder
-# clone some repos
-
-# # Variables
-#
-# projects=~/projects
-# # create projects folder
-# echo "Creating a projects folder..."
-# mkdir -p $projects
-# echo "...done"
-#
-# # clone my website
-# echo "Setting up kyletress.com..."
-# echo "Cloning the repo..."
-# cd $projects
-# hub clone kyletress.com
-# echo "...done"
-#
+# Set macOS preferences
+# Run this last because it will reload the shell
+# source .macos
