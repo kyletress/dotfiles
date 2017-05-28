@@ -1,25 +1,21 @@
 "*":
+  core:
+    closeDeletedFileTabs: true
+    excludeVcsIgnoredPaths: false
+    restorePreviousWindowsOnStart: false
+    telemetryConsent: "no"
+    themes: [
+      "one-dark-ui"
+      "atom-material-syntax"
+    ]
   editor:
-    invisibles: {}
+    fontFamily: "Input Mono"
+    scrollPastEnd: false
     softWrap: true
     softWrapAtPreferredLineLength: true
-    fontFamily: "Input Mono"
-    fontSize: 15
-  core:
-    themes: [
-      "native-ui"
-      "base16-tomorrow-dark-theme"
-    ]
-    hideGitIgnoredFiles: true
-    disabledPackages: [
-      "background-tips"
-      "exception-reporting"
-      "metrics"
-    ]
-    excludeVcsIgnoredPaths: false
+  "exception-reporting":
+    userId: "e1d69bd1-c4fc-402e-8697-607067029179"
+  "tree-view":
+    hideVcsIgnoredFiles: false
   welcome:
     showOnStartup: false
-  emmet: {}
-  "tree-view":
-    hideIgnoredNames: false
-  "one-dark-ui": {}
