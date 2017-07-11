@@ -1,52 +1,54 @@
-#!/bin/sh
-
-echo "Setting up your Mac..."
-
-# Check for Xcode Command Line Tools and install if necessary
-echo "Checking for Xcode Command Line Tools..."
-if ! xcode-select -p > /dev/null 2>&1;
-then
-  echo "A dialog will pop up to install..."
-  xcode-select --install
-else
-  echo "Xcode Command Line Tools already installed!"
-fi
-
-# Check for Homebrew and install if necessary
-echo "Checking for Homebrew..."
-if test ! $(which brew)
-then
-  echo "Installing Homebrew..."
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-else
-  echo "Homebrew already installed!"
-fi
-
-brew update
-brew tap homebrew/bundle # see Brewfile
-brew bundle
-
-# Dotfiles
-DOTFILES_ROOT=~/dotfiles
+#!/usr/bin/env bash
 
 # exit if any line fails
 set -e
 echo ''
 
+# Dotfiles
+cd "$(dirname "$0")/.."
+DOTFILES_ROOT=$(pwd -P)
+
+# Some Print Functions
+info () {
+  printf "\r  [ \033[00;34m..\033[0m ] $1\n"
+}
+
+user () {
+  printf "\r  [ \033[0;33m??\033[0m ] $1\n"
+}
+
+success () {
+  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+}
+
+fail () {
+  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
+  echo ''
+  exit
+}
+
+## Setting Up
+
+info "Setting up your machine..."
+
 # Set up gitconfig file with correct user information
 setup_gitconfig () {
   if ! [ -f git/gitconfig.local.symlink ]
   then
-    echo 'Setting up gitconfig...'
-    git_credential='osxkeychain'
-    echo ' - What is your GitHub name?'
+    info 'Setting up gitconfig...'
+    git_credential='cache'
+    if [ "$(uname -s)" == "Darwin" ]
+    then
+      git_credential='osxkeychain'
+    fi
+    user ' - What is your GitHub name?'
     read -e git_authorname
-    echo ' - What is your GitHub email?'
+    user ' - What is your GitHub email?'
     read -e git_authoremail
 
     sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" git/gitconfig.local.symlink.example > git/gitconfig.local.symlink
 
-    echo 'successfully created your .gitconfig'
+    success 'successfully created your .gitconfig'
   fi
 }
 
@@ -128,7 +130,7 @@ link_file () {
 }
 
 install_dotfiles () {
-  echo 'installing dotfiles...'
+  info 'installing dotfiles...'
 
   local overwrite_all=false backup_all=false skip_all=false
 
@@ -142,12 +144,41 @@ install_dotfiles () {
   done
 }
 
-# Create a projects directory
-mkdir -p $HOME/Projects # if it doesn't exist
-
 setup_gitconfig
 install_dotfiles
 
-# Set macOS preferences
-# Run this last because it will reload the shell
-source .macos
+# Create a projects directory
+mkdir -p $HOME/Projects # if it doesn't exist
+
+# if we're on a Mac
+if [ "$(uname -s)" == "Darwin" ]
+then
+  # Check for Xcode Command Line Tools and install if necessary
+  info "Checking for Xcode Command Line Tools..."
+  if ! xcode-select -p > /dev/null 2>&1;
+  then
+    info "A dialog will pop up to install..."
+    xcode-select --install
+  else
+    success "Xcode Command Line Tools already installed!"
+  fi
+  # Check for homebrew and install if necessary
+  info "Checking for Homebrew..."
+  if test ! $(which brew)
+  then
+    info "Installing Homebrew..."
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  else
+    success "Homebrew already installed!"
+  fi
+  brew update
+  brew tap homebrew/bundle # see Brewfile
+  brew bundle
+  # Set macOS preferences
+  # Run this last because it will reload the shell
+  if [ "$(uname -s)" == "Darwin" ]
+  then
+    info "Setting your macOS preferences"
+    source .macos
+  fi
+fi
