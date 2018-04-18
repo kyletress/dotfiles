@@ -1,3 +1,4 @@
 #--skip-bundle
 -d postgresql
 #-m https://raw.githubusercontent.com/kyletress/rails-template/master/skeleton.rb
+#-m ~/projects/rails-template/skeleton.rb

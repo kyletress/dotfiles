@@ -1,24 +1,22 @@
+#!/bin/bash
+
 # Create a new directory and enter it
 function mkd() {
 	mkdir -p "$@" && cd "$_";
 }
 
-# ----------------------------------------------------
-#   Remote Tracking Branch
-#   -> Creates a new branch and pushes that branch to remote
-#  	http://drewbarontini.com/articles/git-feature-branch-workflow/
-# ----------------------------------------------------
-#
-# $1 - the branch name
-#
-# Usage: `git_remote_tracking_branch fix_sign_up_form_styles`
-#
-
-function git_remote_tracking_branch() {
-  git checkout -b $1 && git push -u origin $1
-}
-
 function settitle() {
   echo -e "\033[32m$1"
   tput sgr0;
+}
+
+# create a local branch and push it upstream
+function upstream_branch() {
+	git checkout -b $1 && git push -u origin $1
+}
+
+# create a local branch off a remote one
+function remote_branch() {
+	git fetch
+	git brnach --track $1 origin/$1
 }

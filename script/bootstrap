@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
+#
+# bootstrap installs things.
 
-# exit if any line fails
-set -e
-echo ''
-
-# Dotfiles
 cd "$(dirname "$0")/.."
 DOTFILES_ROOT=$(pwd -P)
 
-# Some Print Functions
+set -e
+
+echo ''
+
 info () {
   printf "\r  [ \033[00;34m..\033[0m ] $1\n"
 }
@@ -27,39 +27,35 @@ fail () {
   exit
 }
 
-## Setting Up
-
-info "Setting up your machine..."
-
-# Set up gitconfig file with correct user information
 setup_gitconfig () {
   if ! [ -f git/gitconfig.local.symlink ]
   then
-    info 'Setting up gitconfig...'
+    info 'setup gitconfig'
+
     git_credential='cache'
     if [ "$(uname -s)" == "Darwin" ]
     then
       git_credential='osxkeychain'
     fi
-    user ' - What is your GitHub name?'
+
+    user ' - What is your github author name?'
     read -e git_authorname
-    user ' - What is your GitHub email?'
+    user ' - What is your github author email?'
     read -e git_authoremail
 
     sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" git/gitconfig.local.symlink.example > git/gitconfig.local.symlink
 
-    success 'successfully created your .gitconfig'
+    success 'gitconfig'
   fi
 }
 
-# Function to handle the symbolic linking
+
 link_file () {
   local src=$1 dst=$2
 
   local overwrite= backup= skip=
   local action=
 
-  # true if file, directory, or symbolic link
   if [ -f "$dst" -o -d "$dst" -o -L "$dst" ]
   then
 
@@ -75,7 +71,7 @@ link_file () {
 
       else
 
-        echo -e "File already exists: $dst ($(basename "$src")), what do you want to do?\n\
+        user "File already exists: $dst ($(basename "$src")), what do you want to do?\n\
         [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
         read -n 1 action
 
@@ -107,38 +103,35 @@ link_file () {
     if [ "$overwrite" == "true" ]
     then
       rm -rf "$dst"
-      echo "removed $dst"
+      success "removed $dst"
     fi
 
     if [ "$backup" == "true" ]
     then
       mv "$dst" "${dst}.backup"
-      echo "moved $dst to ${dst}.backup"
+      success "moved $dst to ${dst}.backup"
     fi
 
     if [ "$skip" == "true" ]
     then
-      echo "skipped $src"
+      success "skipped $src"
     fi
   fi
 
   if [ "$skip" != "true" ]  # "false" or empty
   then
     ln -s "$1" "$2"
-    echo "linked $1 to $2"
+    success "linked $1 to $2"
   fi
 }
 
 install_dotfiles () {
-  info 'installing dotfiles...'
+  info 'installing dotfiles'
 
   local overwrite_all=false backup_all=false skip_all=false
 
-  # find the files with the .symlink extension, only going 2 levels deep.
-  # and ignoring the .git directory
   for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink' -not -path '*.git*')
   do
-    # destination file should strip .symlink extension and add a '.'
     dst="$HOME/.$(basename "${src%.*}")"
     link_file "$src" "$dst"
   done
@@ -147,38 +140,21 @@ install_dotfiles () {
 setup_gitconfig
 install_dotfiles
 
-# Create a projects directory
-mkdir -p $HOME/Projects # if it doesn't exist
-
-# if we're on a Mac
+# If we're on a Mac, let's install and setup homebrew.
 if [ "$(uname -s)" == "Darwin" ]
 then
-  # Check for Xcode Command Line Tools and install if necessary
-  info "Checking for Xcode Command Line Tools..."
-  if ! xcode-select -p > /dev/null 2>&1;
+  info "installing dependencies"
+  if source bin/dot | while read -r data; do info "$data"; done
   then
-    info "A dialog will pop up to install..."
-    xcode-select --install
+    success "dependencies installed"
   else
-    success "Xcode Command Line Tools already installed!"
-  fi
-  # Check for homebrew and install if necessary
-  info "Checking for Homebrew..."
-  if test ! $(which brew)
-  then
-    info "Installing Homebrew..."
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  else
-    success "Homebrew already installed!"
-  fi
-  brew update
-  brew tap homebrew/bundle # see Brewfile
-  brew bundle
-  # Set macOS preferences
-  # Run this last because it will reload the shell
-  if [ "$(uname -s)" == "Darwin" ]
-  then
-    info "Setting your macOS preferences"
-    source .macos
+    fail "error installing dependencies"
   fi
 fi
+
+# Create development directories
+mkdir -p $HOME/Projects # if it doesn't exist
+mkdir -p $HOME/dev
+
+echo ''
+echo '  All installed!'

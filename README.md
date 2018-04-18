@@ -22,4 +22,7 @@ The first thing to do is run `.install.sh`. This file begins by checking for the
 
 Next, the script will set up your `.gitconfig` file. If it doesn't exist, the command line will prompt you for your Github author name and email, then symlink the example file to `gitconfig.local.symlink`.
 
-The script will then symlink anything with a `.symlink` extension. This is still a work in progress. 
+The script will then symlink anything with a `.symlink` extension. This is still a work in progress.
+
+## To Do
+Clone important repos and dev tools.

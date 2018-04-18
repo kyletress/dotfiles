@@ -1,23 +1,31 @@
 # Navigation
 alias ..="cd .."
-alias cd..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias lsa="ls -a"
 
 alias desktop="cd ~/Desktop"
 alias dotfiles="cd ~/dotfiles"
-alias kt="cd ~/projects/kyletress.github.io"
+alias kt="cd ~/projects/kyletress.com"
 alias mt="cd ~/projects/morgantracey.github.io"
 alias fbs="cd ~/projects/instaviser/fbs"
 alias sledsheet="cd ~/projects/sledsheet"
 alias projects="cd ~/projects"
 alias js="jekyll serve"
 alias pg="postgres -D /usr/local/var/postgres"
-alias wl="cd ~/projects/instaviser/friends"
-alias cal="cd ~/projects/instaviser/cal"
-alias usoc="cd ~/projects/instaviser/usoc"
-alias csw="cd ~/projects/instaviser/csw"
+alias wl="cd ~/dev/instaviser/wl"
+alias cal="cd ~/dev/instaviser/cal"
+alias usoc="cd ~/dev/instaviser/usoc"
+alias csw="cd ~/dev/instaviser/csw"
+alias cia="cd ~/dev/instaviser/cia"
+alias fvl="cd ~/dev/instaviser/fvl"
+alias ua="cd ~/dev/instaviser/ua"
+alias be="bundle exec"
+alias ucd="cd ~/dev/instaviser/ucd"
+# rails stuff
+alias rs="bundle exec rails server"
+alias rc="bundle exec rails console"
+alias sandbox="bundle exec rails console --sandbox"
 
 # Instaviser
 alias tunnel='ssh -f -N'
@@ -26,6 +34,7 @@ alias tunnel='ssh -f -N'
 alias flush="dscacheutil -flushcache"
 
 # Shortcuts
+alias git=hub
 alias g="git"
 alias hpr="hub pull-request"
 alias gitdfw="git diff --ignore-space-change"
@@ -34,7 +43,7 @@ alias gitdfw="git diff --ignore-space-change"
 alias undopush="git push -f origin HEAD^:master"
 
 # Easier migrations
-alias migrate="rake db:migrate"
+alias migrate="bundle exec rake db:migrate"
 
 # Empty the Trash on all mounted volumes and the main HDD
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; rm -rfv ~/.Trash"
@@ -48,7 +57,7 @@ alias ho="heroku open"
 alias hre="heroku restart"
 
 # Delayed Job
-alias rkj="rake jobs:work"
+alias rjw="bundle exec rake jobs:work"
 
 # Deployment
 alias gps='settitle "Pushing to staging..." && git push staging master'
@@ -61,5 +70,8 @@ alias pg="postgres -D /usr/local/var/postgres"
 alias cleanupds="find . -type f -name '*.DS_Store' -ls -delete"
 
 # Middleman
-alias mm="middleman"
-alias mma="middleman article"
+alias mm="bundle exec middleman"
+alias mma="bundle exec middleman article"
+
+# Public Key
+alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"

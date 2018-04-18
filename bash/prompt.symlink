@@ -1,10 +1,4 @@
-# Shell prompt based on the Solarized Dark theme.
-if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
-	export TERM='gnome-256color';
-elif infocmp xterm-256color >/dev/null 2>&1; then
-	export TERM='xterm-256color';
-fi;
-
+#!/bin/bash
 prompt_git() {
 	local s='';
 	local branchName='';
@@ -49,7 +43,7 @@ prompt_git() {
 
 		[ -n "${s}" ] && s=" [${s}]";
 
-		echo -e "${1}${branchName}${blue}${s}";
+		echo -e "${1}${branchName}${purple}${s}";
 	else
 		return;
 	fi;
@@ -59,17 +53,17 @@ if tput setaf 1 &> /dev/null; then
 	tput sgr0; # reset colors
 	bold=$(tput bold);
 	reset=$(tput sgr0);
-	# Solarized colors, taken from http://git.io/solarized-colors.
-	black=$(tput setaf 0);
-	blue=$(tput setaf 33);
-	cyan=$(tput setaf 37);
-	green=$(tput setaf 64);
+	# Gruvbox colors
+	black=$(tput setaf 235);
+	blue=$(tput setaf 109);
+	cyan=$(tput setaf 132);
+	green=$(tput setaf 142);
 	orange=$(tput setaf 166);
-	purple=$(tput setaf 125);
-	red=$(tput setaf 124);
-	violet=$(tput setaf 61);
-	white=$(tput setaf 15);
-	yellow=$(tput setaf 136);
+	purple=$(tput setaf 175);
+	red=$(tput setaf 167);
+	violet=$(tput setaf 132);
+	white=$(tput setaf 223);
+	yellow=$(tput setaf 214);
 else
 	bold='';
 	reset="\e[0m";
@@ -102,12 +96,12 @@ fi;
 # Set the terminal title to the current working directory.
 PS1="\[\033]0;\w\007\]";
 PS1+="\[${bold}\]\n"; # newline
-PS1+="\[${userStyle}\]\u"; # username
-PS1+="\[${white}\] ";
-PS1+="\[${hostStyle}\]\h"; # host
-PS1+="\[${white}\] ";
-PS1+="\[${green}\]\w"; # working directory
-PS1+="\$(prompt_git \"${white} ${violet}\")"; # Git repository details
+PS1+="\[${red}\]\u"; # username
+PS1+="\[${white}\] at ";
+PS1+="\[${hostStyle}\]\h";
+PS1+="\[${white}\] in ";
+PS1+="\[${blue}\]\W"; # working directory
+PS1+="\$(prompt_git \"${white} on ${green}\")"; # Git repository details
 PS1+="\n";
 PS1+="\[${white}\]\$ \[${reset}\]"; # `$` (and reset color)
 export PS1;
