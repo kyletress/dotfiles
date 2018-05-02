@@ -18,5 +18,5 @@ function upstream_branch() {
 # create a local branch off a remote one
 function remote_branch() {
 	git fetch
-	git brnach --track $1 origin/$1
+	git branch --track $1 origin/$1
 }

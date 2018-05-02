@@ -19,5 +19,5 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
 # add devops tools 
-#Adding opt bin and dev bin to PATH for fun
 export PATH=$PATH:~/dev/devops-tools
+export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
