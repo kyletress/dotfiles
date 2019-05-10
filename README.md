@@ -1,10 +1,10 @@
-* On a fresh macOS:
+On a fresh macOS:
 
 ```
 curl --silent https://raw.githubusercontent.com/sam-hosseini/dotfiles/master/setup-mac-os.sh | bash
 ```
 
-* TODO
+todo:
 
 - `.editorconfig`
 - vim 
