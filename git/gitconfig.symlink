@@ -27,8 +27,11 @@
 [core]
 	editor = atom --wait
 	excludesfile = ~/.gitignore
+  whitespace = trailing-space,space-before-tab
 [help]
 	autocorrect = 1
 # Local/private config goes in the include
 [include]
 	path = ~/.gitconfig.local
+[apply]
+  whitespace=fix

@@ -26,6 +26,7 @@ alias be="bundle exec"
 alias ucd="cd ~/dev/instaviser/ucd"
 alias lrs="cd ~/dev/instaviser/lrs"
 alias devops="cd ~/dev/devops-tools"
+alias nestle="cd ~/dev/instaviser/nestle"
 
 # rails stuff
 alias rs="bundle exec rails server"

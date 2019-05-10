@@ -3,9 +3,9 @@ if [ -f ~/.alias ]; then
 fi
 
 # -f is true if exists and is a regular file (not dir or symlink)
-if [ -f ~/.prompt ]; then
-  source ~/.prompt
-fi
+#if [ -f ~/.prompt ]; then
+#  source ~/.prompt
+#fi
 
 if [ -f ~/.functions ]; then
   source ~/.functions
@@ -14,10 +14,15 @@ fi
 # Load the default .profile
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile"
 
+# macOS doesn't follow conventions
+if [ -r ~/.bashrc ]; then
+   source ~/.bashrc
+fi
+
 # Load Rbenv automatically
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
-# add devops tools 
+# add devops tools
 export PATH=$PATH:~/dev/devops-tools
 export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"

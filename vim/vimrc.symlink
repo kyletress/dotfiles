@@ -1,160 +1,156 @@
-call plug#begin('~/.vim/plugged')
-Plug 'morhetz/gruvbox'
-Plug 'scrooloose/nerdtree'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-bundler'
-Plug 'tpope/vim-endwise'
-Plug 'mattn/emmet-vim'
-Plug 'mileszs/ack.vim'
-Plug 'ap/vim-css-color'
-Plug 'kchmck/vim-coffee-script'
-call plug#end()
-
-if !exists("g:syntax_on")
-  syntax enable
-end
-
+set nocompatible
 filetype plugin indent on
-set history=1000
-
-" COLORSCHEME
-set t_Co=256
-set background=dark " Setting dark mode
-colorscheme gruvbox
-highlight Normal ctermbg=NONE
-highlight nonText ctermbg=NONE
-set termguicolors
-
-set autoread "reload files updated outside of vim
-
-" LEADER and MAPPINGS
-" avoid hitting shift
-nmap ; :
-let mapleader = " " " set mapleader to space
-nnoremap <leader><leader> :b#<cr> " double spacebar for previous buffer
-nnoremap <leader>V :e $MYVIMRC<cr> " shortcut to vimrc
-map <leader>s :source ~/.vimrc<CR> " quickly source vimrc
-nnoremap <Leader>p :CtrlP<CR> " faster ctrlp
-nmap <Leader>w :w<CR> " quick save
-nnoremap <Leader>f :NERDTreeToggle<Enter> " toggle NERDTree
-nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr> " open vimrc in split window
-" easier resizing of split windows
-nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
-:nnoremap <F5> :buffers<CR>:buffer<Space> " use f5 to choose a buffer
-nnoremap <Leader>l :ls<CR>
-nnoremap <Leader>b :bp<CR>
-nnoremap <Leader>n :bn<CR>
-nnoremap <Leader>g :e#<CR>
-nnoremap <Leader>1 :1b<CR>
-nnoremap <Leader>2 :2b<CR>
-nnoremap <Leader>3 :3b<CR>
-nnoremap <Leader>4 :4b<CR>
-nnoremap <Leader>5 :5b<CR>
-nnoremap <Leader>6 :6b<CR>
-nnoremap <Leader>7 :7b<CR>
-nnoremap <Leader>8 :8b<CR>
-nnoremap <Leader>9 :9b<CR>
-nnoremap <Leader>0 :10b<CR>
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR> " Bind K to grep word under cursor
-
-set noeol " no empty line at the end of every file
-set binary
-set noswapfile " no swap files
-set updatetime=250 " faster update time
-set ttimeoutlen=50 " faster switching between modes
-set wrap " line wrapping
-set shiftwidth=2 " Use 2 spaces for indentation
-set softtabstop=2 " Use 2 spaces for soft tab
-set tabstop=2 " Use 2 spaces for tab
-set expandtab " Expand tab to spaces
-set number " Enable line numbers
-set cursorline " Highlight current line
-set scrolloff=3 " Start scrolling 3 lines before horizontal window border
-set splitbelow " More natural splits
-set splitright " More natural splits
-
-hi CursorLine term=bold cterm=bold guibg=Grey40 " fix cursor and line highight
-set nostartofline " Don’t reset cursor to start of line when moving around.
-set ignorecase " smarter case for searches
-set smartcase
+syntax enable " enable syntax highlighting
+set number " line numbers
+set tabstop=2 softtabstop=2 shiftwidth=2 expandtab " tabs at 2
 set visualbell
-set hlsearch " highlight words on search
-set textwidth=80 " wrap text at 80 characters
-set formatoptions=qrn1
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags " autocomplete of HTML and CSS
-set runtimepath^=~/.vim/bundle/ctrlp.vim " Control+P fuzzy finder
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>") " Intelligent tab for emmet expand
-" Don't automatically add comments
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 set noeb vb t_vb= " Disable beep and white flash on error
 set backspace=indent,eol,start " make sure delete works in iTerm
 :set virtualedit=onemore " saner cursor
-set laststatus=2 " Show the buffer number in the status line.
+set wildmenu
+colorscheme wwdc16
+let g:wwdc16_use16 = 1
 
-" open NERDTree automatically
-autocmd StdinReadPre * let s:std_in=1 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+let mapleader = " " " space as leader
+nmap ; :| " map semicolon to colon in normal mode
+noremap <leader>s :update<cr> " quick save
+noremap <leader>w :update<cr> " bad habits. Also quick save
+noremap <leader>q :q<cr> " quick quit
+nnoremap <C-J> <C-W><C-J> " easier window navigation
+nnoremap <C-K> <C-W><C-K> " easier window navigation
+nnoremap <C-L> <C-W><C-L> " easier window navigation
+nnoremap <C-H> <C-W><C-H> " easier window navigation
+nnoremap <leader>sv :source $MYVIMRC<cr> " quickly source my vimrc file
+"nnoremap j gj " move down 1 line, even on wrapped lines
+"nnoremap k gk " move up 1 line, even on wrapped lines
 
-let NERDTreeQuitOnOpen = 1 " close NERDTree after opening a file
+" netrw
+let g:netrw_banner = 0 " don't show the banner
+let g:netrw_liststyle = 3 " open in tree view
+let g:netrw_winsize = -28 " absolute width of netrw window
+let g:netrw_sort_sequence = '[\/]$,*' " directories on top, files below
+let g:netrw_browse_split = 4 " use the previous window to open file
 
-" close NERDTree if all files are closed
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-let NERDTreeAutoDeleteBuffer = 1 " automatically delete nerdtree buffer of deleted file
-let NERDTreeMinimalUI = 1 " disable help
-let NERDTreeDirArrows = 1
-let g:NERDTreeShowHidden=1 " show hidden files
-let NERDTreeIgnore=['.git$[[dir]]', '.swp'] " hide .swp files in Nerdtree
+call plug#begin('~/.vim/plugged')
+" Plug 'morhetz/gruvbox'
+" Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'tpope/vim-rails'
+" Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+" Plug 'airblade/vim-gitgutter'
+" Plug 'tpope/vim-vinegar'
+" Plug 'tpope/vim-bundler'
+" Plug 'tpope/vim-endwise'
+Plug 'mattn/emmet-vim'
+" Plug 'mileszs/ack.vim'
+" Plug 'ap/vim-css-color'
+" Plug 'kchmck/vim-coffee-script'
+call plug#end()
+"
 
-"easier nav between windows
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-nnoremap j gj
-nnoremap k gk
-" easy vertical split
-nnoremap <silent> vv <C-w>v
-
-"highlight clear SignColumn
-"highlight clear LineNr
-
-" Silver Searcher
-if executable('ag')
-  " use ag instead of grep
-  set grepprg=ag\ --nogroup\ --nocolor\ --vimgrep
-  set grepformat^=%f:%l:%c:%m
-  " use ag in CtrlP for listing files
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  let g:ctrlp_use_caching = 0
-endif
-
-" Show ignored in NerdTree
-let g:NERDTreeShowIgnoredStatus = 1
-
-" Enable copying to clipboad using Ctrl-c
-map <C-c> y:e ~/clipsongzboard<CR>P:w !pbcopy<CR> <CR>:bdelete!<CR>
-
-" yank to clipboard
-if has("clipboard")
-  set clipboard=unnamed " copy to the system clipboard
-
-  if has("unnamedplus") " X11 support
-    set clipboard+=unnamedplus
-  endif
-endif
-
-let g:ctrlp_show_hidden = 1
-
-" Ngb, where n is a buffer number up to 99
-let c = 1
-while c <= 99
-  execute "nnoremap " . c . "gb :" . c . "b\<CR>"
-  let c += 1
-endwhile
-
-highlight GitGutterAdd ctermfg=DarkGreen " customize git gutter
+"
+" " COLORSCHEME
+" set t_Co=256
+" set background=dark " Setting dark mode
+" colorscheme gruvbox
+" highlight Normal ctermbg=NONE
+" highlight nonText ctermbg=NONE
+" set termguicolors
+"
+"
+" " LEADER and MAPPINGS
+" nnoremap <leader><leader> :b#<cr> " double spacebar for previous buffer
+" nnoremap <leader>V :e $MYVIMRC<cr> " shortcut to vimrc
+" map <leader>s :source ~/.vimrc<CR> " quickly source vimrc
+" nnoremap <Leader>p :CtrlP<CR> " faster ctrlp
+" nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr> " open vimrc in split window
+" " easier resizing of split windows
+" nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+" nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+" :nnoremap <F5> :buffers<CR>:buffer<Space> " use f5 to choose a buffer
+" nnoremap <Leader>l :ls<CR>
+" nnoremap <Leader>b :bp<CR>
+" nnoremap <Leader>n :bn<CR>
+" nnoremap <Leader>g :e#<CR>
+" nnoremap <Leader>1 :1b<CR>
+" nnoremap <Leader>2 :2b<CR>
+" nnoremap <Leader>3 :3b<CR>
+" nnoremap <Leader>4 :4b<CR>
+" nnoremap <Leader>5 :5b<CR>
+" nnoremap <Leader>6 :6b<CR>
+" nnoremap <Leader>7 :7b<CR>
+" nnoremap <Leader>8 :8b<CR>
+" nnoremap <Leader>9 :9b<CR>
+" nnoremap <Leader>0 :10b<CR>
+" nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR> " Bind K to grep word under cursor
+"
+" set noeol " no empty line at the end of every file
+" set noswapfile " no swap files
+" set updatetime=250 " faster update time
+" set ttimeoutlen=50 " faster switching between modes
+" set wrap " line wrapping
+" set cursorline " Highlight current line
+" set scrolloff=3 " Start scrolling 3 lines before horizontal window border
+" set splitbelow " More natural splits
+" set splitright " More natural splits
+"
+" hi CursorLine term=bold cterm=bold guibg=Grey40 " fix cursor and line highight
+" set nostartofline " Don’t reset cursor to start of line when moving around.
+" set ignorecase " smarter case for searches
+" set smartcase
+" set textwidth=80 " wrap text at 80 characters
+" set formatoptions=qrn1
+" autocmd FileType html set omnifunc=htmlcomplete#CompleteTags " autocomplete of HTML and CSS
+" set runtimepath^=~/.vim/bundle/ctrlp.vim " Control+P fuzzy finder
+" imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>") " Intelligent tab for emmet expand
+" " Don't automatically add comments
+" autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+" set laststatus=2 " Show the buffer number in the status line.
+"
+" "easier nav between windows
+" nnoremap <C-J> <C-W><C-J>
+" nnoremap <C-K> <C-W><C-K>
+" nnoremap <C-L> <C-W><C-L>
+" nnoremap <C-H> <C-W><C-H>
+" nnoremap j gj
+" nnoremap k gk
+" " easy vertical split
+" nnoremap <silent> vv <C-w>v
+"
+" "highlight clear SignColumn
+" "highlight clear LineNr
+"
+" " Silver Searcher
+" if executable('ag')
+"   " use ag instead of grep
+"   set grepprg=ag\ --nogroup\ --nocolor\ --vimgrep
+"   set grepformat^=%f:%l:%c:%m
+"   " use ag in CtrlP for listing files
+"   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+"   let g:ctrlp_use_caching = 0
+" endif
+"
+"
+" " Enable copying to clipboad using Ctrl-c
+" map <C-c> y:e ~/clipsongzboard<CR>P:w !pbcopy<CR> <CR>:bdelete!<CR>
+"
+" " yank to clipboard
+" if has("clipboard")
+"   set clipboard=unnamed " copy to the system clipboard
+"
+"   if has("unnamedplus") " X11 support
+"     set clipboard+=unnamedplus
+"   endif
+" endif
+"
+" let g:ctrlp_show_hidden = 1
+"
+" " Ngb, where n is a buffer number up to 99
+" let c = 1
+" while c <= 99
+"   execute "nnoremap " . c . "gb :" . c . "b\<CR>"
+"   let c += 1
+" endwhile
+"
+" highlight GitGutterAdd ctermfg=DarkGreen " customize git gutter

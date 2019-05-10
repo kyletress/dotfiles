@@ -25,4 +25,4 @@ Next, the script will set up your `.gitconfig` file. If it doesn't exist, the co
 The script will then symlink anything with a `.symlink` extension. This is still a work in progress.
 
 ## To Do
-Clone important repos and dev tools.
+Clone important repos and dev tools. Install Ruby. Latest and required.
