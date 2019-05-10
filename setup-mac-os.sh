@@ -66,7 +66,7 @@ function clone_dotfiles() {
     subset "${DOTFILES_REPO} already exists"
     pull_latest $DOTFILES_REPO
   else
-    url=https://github.com/kyletress/dotfiles.git
+    url=https://github.com/kyletress/dotfiles
     if git clone "$url" $DOTFILES_REPO && \
       git -C $DOTFILES_REPO remote set-url origin git@github.com:kyletress/dotfiles.git; then 
         success "Dotfiles repository cloned into ${DOTFILES_REPO}"
