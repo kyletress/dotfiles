@@ -1,0 +1,42 @@
+
+[color]
+	ui = true
+[user]
+	name = Kyle Tress
+	email = kyle@kyletress.com
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
+[alias]
+	b = branch
+	co = checkout
+	cob = checkout -b
+	s = status
+	d = diff
+	l = log --pretty=oneline -n 40 --abbrev-commit
+	ls = log --oneline
+	wip = commit -am "WIP"
+	undo = reset HEAD~1 --mixed
+	cm = !git add -A && git commit -m
+	dfw = diff --ignore-space-change
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+[push]
+	default = simple
+[core]
+	editor = atom --wait
+	excludesfile = ~/.gitignore
+  whitespace = trailing-space,space-before-tab
+[help]
+	autocorrect = 1
+# Local/private config goes in the include
+[include]
+	path = ~/.gitconfig.local
+[apply]
+  whitespace=fix
+[credential]
+	helper = osxkeychain
