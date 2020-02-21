@@ -1,7 +1,7 @@
 ## Installation 
 
 ```
-curl --silent https://raw.githubusercontent.com/kyletress/dotfiles/master/bootstrap.sh | bash
+curl --silent https://raw.githubusercontent.com/kyletress/dotfiles/master/install.sh | zsh
 ```
 
 ## Vim Package Manager 
