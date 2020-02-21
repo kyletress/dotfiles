@@ -9,7 +9,6 @@ alias 'reload=source ~/.zshrc'
 alias '..=cd ..'
 alias 'lsa=ls -a'
 alias 'code=cd ~/code'
-alias 'dotfiles=cd ~/code/dotfiles'
 
 # Git Aliases 
 
