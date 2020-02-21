@@ -15,7 +15,6 @@ brew 'python'
 brew 'r'
 brew 'redis'
 brew 'rbenv'
-brew 'wget'
 brew 'yarn'
 
 # Mac App Store

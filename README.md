@@ -1,7 +1,11 @@
 On a fresh macOS:
 
 ```
-curl --silent https://raw.githubusercontent.com/sam-hosseini/dotfiles/master/setup-mac-os.sh | bash
+curl --silent https://raw.githubusercontent.com/kyletress/dotfiles/master/bootstrap.sh | bash
+```
+
+```
+curl --silent https://raw.githubusercontent.com/kyletress/dotfiles/master/setup-mac-os.sh | bash
 ```
 
 todo:
@@ -10,5 +14,4 @@ todo:
 - vim 
 - tmux 
 - macOS defaults
-- fish 
 - ruby
