@@ -1,0 +1,3 @@
+[submodule ".vim/pack/bundle/start/emmet-vim"]
+	path = .vim/pack/bundle/start/emmet-vim
+	url = https://github.com/mattn/emmet-vim
