@@ -54,4 +54,5 @@ let g:netrw_winsize=20
 nnoremap <leader>n :Lexplore<CR> " toggle on the left of the editor
 
 " Emmet 
-let g:user_emmet_leader_key=',' " redefine the trigger to ',,'
+"let g:user_emmet_leader_key=',' " redefine the trigger to ',,'
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")

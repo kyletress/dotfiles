@@ -1,0 +1,12 @@
+[submodule ".vim/pack/bundle/start/vim-latex"]
+	path = .vim/pack/bundle/start/vim-latex
+	url = https://github.com/vim-latex/vim-latex
+[submodule ".vim/pack/bundle/start/fzf.vim"]
+	path = .vim/pack/bundle/start/fzf.vim
+	url = https://github.com/junegunn/fzf.vim
+[submodule ".vim/pack/bundle/start/vim-vinegar"]
+	path = .vim/pack/bundle/start/vim-vinegar
+	url = https://github.com/tpope/vim-vinegar
+[submodule ".vim/pack/bundle/start/vim-rails"]
+	path = .vim/pack/bundle/start/vim-rails
+	url = https://github.com/tpope/vim-rails
