@@ -10,3 +10,6 @@
 [submodule ".vim/pack/bundle/start/vim-rails"]
 	path = .vim/pack/bundle/start/vim-rails
 	url = https://github.com/tpope/vim-rails
+[submodule ".vim/pack/bundle/start/vim-emmet"]
+	path = .vim/pack/bundle/start/vim-emmet
+	url = https://github.com/mattn/emmet-vim
