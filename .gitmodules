@@ -13,3 +13,6 @@
 [submodule ".vim/pack/bundle/start/vimtex"]
 	path = .vim/pack/bundle/start/vimtex
 	url = https://github.com/lervag/vimtex
+[submodule ".vim/pack/bundle/start/ultisnips"]
+	path = .vim/pack/bundle/start/ultisnips
+	url = https://github.com/SirVer/ultisnips
