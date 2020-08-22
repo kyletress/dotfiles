@@ -56,3 +56,11 @@ nnoremap <leader>n :Lexplore<CR> " toggle on the left of the editor
 " Emmet 
 "let g:user_emmet_leader_key=',' " redefine the trigger to ',,'
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+
+" Quickly edit .vimrc in a split
+:nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+" Quickly source .vimrc
+:nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" vim-latex
+let g:tex_flavor='latex' "tex instead of plaintex
