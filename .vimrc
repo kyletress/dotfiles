@@ -61,6 +61,7 @@ imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 :nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 " Quickly source .vimrc
 :nnoremap <leader>sv :source $MYVIMRC<cr>
-
-" vim-latex
-let g:tex_flavor='latex' "tex instead of plaintex
+let g:tex_flavor = "latex"
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'

@@ -16,7 +16,7 @@ curl --silent https://raw.githubusercontent.com/kyletress/dotfiles/master/instal
 
 ### Adding a package
 
-This uses git submodules. 
+Use git submodules: 
 
 ```
 git submodule add https://github.com/vim-airline/vim-airline.git .vim/pack/bundle/start/vim-airline
@@ -24,8 +24,7 @@ git submodule add https://github.com/vim-airline/vim-airline.git .vim/pack/bundl
 ### Removing a package
 
 ```
-git submodule deinit vim/pack/bundle/start/vim-airline
+git submodule deinit .vim/pack/bundle/start/vim-airline
 git rm .vim/pack/bundle/start/vim-airline
-rm -Rf .git/modules/vim/pack/bundle/start/vim-airline
-git commit
+rm -Rf .git/modules/.vim/pack/bundle/start/vim-airline
 ```
