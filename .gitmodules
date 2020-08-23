@@ -16,3 +16,6 @@
 [submodule ".vim/pack/bundle/start/ultisnips"]
 	path = .vim/pack/bundle/start/ultisnips
 	url = https://github.com/SirVer/ultisnips
+[submodule ".vim/pack/bundle/start/tex-conceal"]
+	path = .vim/pack/bundle/start/tex-conceal
+	url = https://github.com/KeitaNakamura/tex-conceal.vim

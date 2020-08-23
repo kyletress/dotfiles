@@ -3,6 +3,7 @@ set nocompatible
 set visualbell " stop beeping at me
 set noeb vb t_vb= " Disable beep and white flash on error
 set number "turn on line numbers
+set backspace=indent,eol,start " normal backspace
 filetype plugin indent on " Filetype auto-detection
 syntax on " Syntax highlighting enabled
 
@@ -54,8 +55,7 @@ let g:netrw_winsize=20
 nnoremap <leader>n :Lexplore<CR> " toggle on the left of the editor
 
 " Emmet 
-"let g:user_emmet_leader_key=',' " redefine the trigger to ',,'
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+let g:user_emmet_leader_key=',' " redefine the trigger to ',,'
 
 " Quickly edit .vimrc in a split
 :nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -65,3 +65,7 @@ let g:tex_flavor = "latex"
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
+" conceal (mostly used for LaTeX
+set conceallevel=2
+let g:tex_conceal="abdgm"
