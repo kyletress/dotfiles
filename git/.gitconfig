@@ -1,37 +1,85 @@
-[color]
-	ui = true
+# Core Git Configuration
 [user]
 	name = Kyle Tress
 	email = kyle@kyletress.com
+
+[core]
+	editor = code --wait
+	excludesfile = ~/.gitignore
+	whitespace = trailing-space,space-before-tab
+
+[init]
+	defaultBranch = main
+
+[color]
+	ui = true
+
+# Branch and Remote Operations
+[push]
+	default = current
+	autoSetupRemote = true
+
+[pull]
+	rebase = false
+
+[fetch]
+	prune = true
+
+# Merge and Conflict Resolution
+[merge]
+	tool = vscode
+
+[mergetool "vscode"]
+	cmd = code --wait $MERGED
+
+[rerere]
+	enabled = true
+
+# Git LFS Configuration
 [filter "lfs"]
 	clean = git lfs clean %f
 	smudge = git lfs smudge %f
 	required = true
+
+# Aliases
 [alias]
+	# Basic shortcuts
 	b = branch
 	co = checkout
 	cob = checkout -b
 	s = status
 	d = diff
+	dfw = diff --ignore-space-change
+	
+	# Staging and committing
+	unstage = reset HEAD --
+	cm = !git add -A && git commit -m
+	wip = commit -am "WIP"
+	amend = commit --amend --no-edit
+	
+	# History and logging
 	l = log --pretty=oneline -n 40 --abbrev-commit
 	ls = log --oneline
-	wip = commit -am "WIP"
-	undo = reset HEAD~1 --mixed
-	cm = !git add -A && git commit -m
-	dfw = diff --ignore-space-change
+	last = log -1 HEAD
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-[push]
-	default = simple
-[core]
-	editor = code --wait
-	excludesfile = ~/.gitignore
-  whitespace = trailing-space,space-before-tab
+	
+	# Utilities
+	undo = reset HEAD~1 --mixed
+	conflicts = diff --name-only --diff-filter=U
+	visual = !gitk
+
+# Whitespace and Formatting
+[apply]
+	whitespace = fix
+
+# Help and Usability
 [help]
 	autocorrect = 1
+
+# Credentials
+[credential]
+	helper = osxkeychain
+
 # Local/private config goes in the include
 [include]
 	path = ~/.gitconfig.local
-[apply]
-  whitespace=fix
-[credential]
-	helper = osxkeychain
