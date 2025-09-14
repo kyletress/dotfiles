@@ -1,0 +1,12 @@
+
+brew "git"
+brew "gh"
+brew "python"
+brew "chruby"
+brew "ruby-install"
+brew "tmux"
+brew "ffmpeg"
+brew "curl"
+brew "stow"
+brew "nginx"
+brew "zsh"

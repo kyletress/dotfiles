@@ -3,10 +3,6 @@
 [user]
 	name = Kyle Tress
 	email = kyle@kyletress.com
-[filter "hawser"]
-	clean = git hawser clean %f
-	smudge = git hawser smudge %f
-	required = true
 [filter "lfs"]
 	clean = git lfs clean %f
 	smudge = git lfs smudge %f
@@ -27,7 +23,7 @@
 [push]
 	default = simple
 [core]
-	editor = vim --wait
+	editor = code --wait
 	excludesfile = ~/.gitignore
   whitespace = trailing-space,space-before-tab
 [help]
