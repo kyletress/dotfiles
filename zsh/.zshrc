@@ -1,5 +1,5 @@
 # Prompt
-PROMPT='%n:~$ '
+PROMPT='%F{cyan}%n%f (%m) %1~ $ '
 
 # Aliases 
 alias 'reload=source ~/.zshrc'
